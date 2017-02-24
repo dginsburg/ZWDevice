@@ -20,10 +20,10 @@
 
 - (void)testModel {
     // On simulator, it will equal the platform device model
-#ifdef TARGET_OS_WATCH
-    XCTAssertEqualObjects(ZWDevice.model, WKInterfaceDevice.currentDevice.model);
-#else
+#ifdef TARGET_OS_IOS
     XCTAssertEqualObjects(ZWDevice.model, [UIDevice currentDevice].model);
+#else
+    XCTAssertEqualObjects(ZWDevice.model, WKInterfaceDevice.currentDevice.model);
 #endif
 }
 

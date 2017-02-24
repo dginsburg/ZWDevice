@@ -24,10 +24,6 @@
 #import "ZWDevice.h"
 #import <sys/utsname.h>
 
-#ifdef TARGET_OS_WATCH
-#import <WatchKit/WatchKit.h>
-#endif
-
 @implementation ZWDevice
 
 + (NSDictionary *)models {
@@ -120,10 +116,10 @@
 }
 
 + (NSString *)modelForIdentifier:(NSString *)identifier {
-#ifdef TARGET_OS_WATCH
-    return self.models[identifier] ?: WKInterfaceDevice.currentDevice.model;
-#else
+#ifdef TARGET_OS_IOS
     return self.models[identifier] ?: UIDevice.currentDevice.model;
+#else
+    return self.models[identifier] ?: WKInterfaceDevice.currentDevice.model;
 #endif
 }
 
