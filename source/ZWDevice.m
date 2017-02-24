@@ -116,7 +116,7 @@
 }
 
 + (NSString *)modelForIdentifier:(NSString *)identifier {
-#ifdef TARGET_OS_IOS
+#if TARGET_OS_IOS
     return self.models[identifier] ?: UIDevice.currentDevice.model;
 #else
     return self.models[identifier] ?: WKInterfaceDevice.currentDevice.model;
